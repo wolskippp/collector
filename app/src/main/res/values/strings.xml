@@ -1,0 +1,14 @@
+<resources>
+
+    <string name="facebook_app_id">1559470051028990</string>
+
+    <string name="app_name">Collector</string>
+    <string name="profile">PROFILE</string>
+    <string name="feed">DEBTS</string>
+    <string name="log_out">LOG OUT</string>
+    <string name="settings">SETTINGS</string>
+    <string name="borrow_label">BORROW</string>
+    <string name="lend_label">LEND</string>
+    <string name="sort">Sort:</string>
+    <string name="date">Date</string>
+</resources>

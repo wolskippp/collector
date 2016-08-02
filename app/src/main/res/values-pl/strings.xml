@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Collector</string>
+    <string name="feed">DŁUGI</string>
+    <string name="profile">PROFIL</string>
+    <string name="settings">USTAWIENIA</string>
+    <string name="borrow_label">WZIĄŁEŚ</string>
+    <string name="lend_label">DAŁEŚ</string>
+    <string name="log_out">WYLOGUJ SIĘ</string>
+    <string name="sort">Sortuj:</string>
+</resources>
