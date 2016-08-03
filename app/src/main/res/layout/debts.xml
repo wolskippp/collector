@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_margin="0dp">
 
 
     <RelativeLayout
@@ -57,7 +58,7 @@
 
         <android.support.v4.view.ViewPager
             android:id="@+id/viewpager"
-
+            android:layout_marginTop="2dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
@@ -69,13 +70,33 @@
             android:layout_width="90dp"
             android:layout_height="wrap_content"
             android:id="@+id/listView2"
-
+            android:visibility="invisible"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="false"
 
             android:layout_alignParentTop="true" />
+
+
+
     </RelativeLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/add_new_debt_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_add"
+        app:backgroundTint="@color/colorAccent"
+        app:borderWidth="6dp"
+        app:elevation="8dp"
+        app:fabSize="normal"
+        android:clickable="true"
+        app:rippleColor="@color/guillotine_background_dark"
+        android:paddingBottom="15dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:transitionName="@string/transition_dialog"
+        />
 
 
 </RelativeLayout>

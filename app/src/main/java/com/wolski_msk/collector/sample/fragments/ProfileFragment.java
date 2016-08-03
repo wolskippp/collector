@@ -3,7 +3,6 @@ package com.wolski_msk.collector.sample.fragments;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -11,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.wolski_msk.collector.sample.R;
@@ -41,7 +39,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
 
        String name = PreferenceManager.getDefaultSharedPreferences(getContext()).getString("my_name", "no name found");
 
-        ((ImageView)view.findViewById(R.id.imageView)).setImageBitmap(getImageBitmap(getContext(),"profile_pic","bmp"));
+        ((ImageView)view.findViewById(R.id.profile_image)).setImageBitmap(getImageBitmap(getContext(),"profile_pic","bmp"));
         ((TextView)view.findViewById(R.id.profile_name)).setText(name);
 
         return view;

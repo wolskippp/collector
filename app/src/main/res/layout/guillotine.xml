@@ -27,11 +27,14 @@
         >
 
         <ImageView
+            android:id="@+id/profile_imageView"
             style="@style/ImageView.GuillotineItem"
             android:src="@drawable/ic_profile" />
 
         <TextView
+            android:id="@+id/profile_textView"
             style="@style/TextView.GuillotineItem"
+            android:textAppearance="?android:textAppearanceMedium"
             android:text="@string/profile" />
     </LinearLayout>
 
@@ -42,11 +45,14 @@
         android:background="?android:attr/selectableItemBackground">
 
         <ImageView
+            android:id="@+id/debts_imageView"
             style="@style/ImageView.GuillotineItem"
-            android:src="@drawable/ic_feed" />
+            android:src="@drawable/ic_feed_active" />
 
         <TextView
-            style="@style/TextView.GuillotineItem"
+            android:id="@+id/debts_textView"
+            style="@style/TextView.GuillotineItem.Selected"
+            android:textAppearance="?android:textAppearanceMedium"
             android:text="@string/feed" />
     </LinearLayout>
 
@@ -63,11 +69,14 @@
         android:background="?android:attr/selectableItemBackground">
 
         <ImageView
+            android:id="@+id/log_out_imageView"
             style="@style/ImageView.GuillotineItem"
             android:src="@drawable/ic_log_out" />
 
         <TextView
+            android:id="@+id/log_out_textView"
             style="@style/TextView.GuillotineItem"
+            android:textAppearance="?android:textAppearanceMedium"
             android:text="@string/log_out" />
     </LinearLayout>
 
@@ -78,11 +87,14 @@
         android:background="?android:attr/selectableItemBackground">
 
         <ImageView
+            android:id="@+id/settings_imageView"
             style="@style/ImageView.GuillotineItem"
             android:src="@drawable/ic_settings" />
 
         <TextView
+            android:id="@+id/settings_textView"
             style="@style/TextView.GuillotineItem"
+            android:textAppearance="?android:textAppearanceMedium"
             android:text="@string/settings" />
     </LinearLayout>
 </LinearLayout>

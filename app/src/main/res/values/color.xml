@@ -3,4 +3,11 @@
     <color name="guillotine_background">#444153</color>
     <color name="guillotine_background_dark">#383547</color>
     <color name="selected_item_color">#30d1d5</color>
+
+<!--transition-->
+    <color name="colorAccent">#444153</color>
+    <color name="fab_background_color">#383547</color>
+    <color name="dialog_background_color">#383547</color>
+    <color name="dialog_background_scrim">#99323232</color>
+
 </resources>

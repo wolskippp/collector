@@ -1,2 +1,2 @@
-include ':app', ':library:guillotine'
+include ':app', ':library:guillotine', ':transistion'
 include ':library:facebook'

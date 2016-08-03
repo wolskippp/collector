@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.DialogActivity">
+
+
+    <LinearLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginEnd="@dimen/dialog_margin"
+        android:layout_marginStart="@dimen/dialog_margin"
+        android:background="@drawable/dialog_background"
+        android:transitionName="@string/transition_dialog"
+        android:elevation="@dimen/dialog_elevation"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+        <ViewFlipper
+            android:id="@+id/flipper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="vertical">-->
+
+
+
+            <!--<android.support.design.widget.TabLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content">-->
+                <!--<android.support.design.widget.TabItem-->
+
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:text="Borrow"/>-->
+<!--<android.support.design.widget.TabItem-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:text="Lend"/>-->
+            <!--</android.support.design.widget.TabLayout>-->
+
+
+            <!--<android.support.design.widget.TabLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content">-->
+                <!--<android.support.design.widget.TabItem-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:text="Money"/>-->
+                <!--<android.support.design.widget.TabItem-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:text="Object"/>-->
+            <!--</android.support.design.widget.TabLayout>-->
+
+
+
+        <!--</LinearLayout>-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:orientation="vertical">-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="10dp"-->
+                    <!--android:text="Borrowed Object"-->
+                    <!--android:textAppearance="?android:textAppearanceLarge"/>-->
+
+                <!--<EditText-->
+                <!--android:hint="Object name"-->
+                <!--android:layout_width="match_parent"-->
+
+                <!--android:layout_height="wrap_content"-->
+                <!--android:id="@+id/editText2"-->
+                <!--android:elegantTextHeight="false" />-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:orientation="horizontal">-->
+
+
+                    <!--<EditText-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:inputType="textPersonName"-->
+                        <!--android:layout_weight="7"-->
+                        <!--android:hint="Name of the person"-->
+                        <!--android:ems="10"-->
+                        <!--android:id="@+id/editText"-->
+                        <!--android:layout_gravity="center_horizontal" />-->
+
+                    <!--<EditText-->
+                        <!--android:hint="zł"-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_weight="2"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:id="@+id/editText3"-->
+                        <!--android:elegantTextHeight="false"-->
+                        <!--android:autoText="false"-->
+                        <!--android:editable="false"-->
+                        <!--android:numeric="integer|decimal"-->
+                        <!--android:singleLine="true" />-->
+
+                <!--</LinearLayout>-->
+
+                <!--<EditText-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:hint="Description"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:id="@+id/editText4" />-->
+
+            <!--</LinearLayout>-->
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Borrowed Object"
+                    android:textAppearance="?android:textAppearanceLarge"/>
+
+                <android.support.design.widget.TextInputLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    >
+                <EditText
+                    android:hint="Object name"
+                    android:layout_width="match_parent"
+                    android:inputType="textAutoComplete"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editText2"
+                    android:elegantTextHeight="false" />
+                </android.support.design.widget.TextInputLayout>
+
+
+                <android.support.design.widget.TextInputLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textAutoComplete"
+                        android:layout_weight="7"
+                        android:hint="Name of the person"
+
+                        android:ems="10"
+                        android:id="@+id/editText"
+                        android:layout_gravity="center_horizontal" />
+
+</android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:hint="Description"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editText4" />
+
+                </android.support.design.widget.TextInputLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:onClick="onClick"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add picture ?"
+                    android:inputType="textCapCharacters"
+                    android:id="@+id/button" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/imageView"
+                    android:src="@mipmap/ic_launcher"/>
+</LinearLayout>
+            </LinearLayout>
+
+
+        </ViewFlipper>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            >
+        <Button
+            android:layout_marginRight="5dp"
+            android:id="@+id/close"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:background="@drawable/btn_background"
+            android:layout_marginTop="20dp"
+            android:text="Close"
+            android:layout_weight="1"
+            android:textColor="#fff"
+            android:textAppearance="?android:textAppearanceMedium"/>
+
+            <Button
+                android:id="@+id/next"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+android:layout_marginLeft="5dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:background="@drawable/btn_background"
+                android:layout_marginTop="20dp"
+                android:text="Next"
+                android:textColor="#fff"
+                android:textAppearance="?android:textAppearanceMedium"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</FrameLayout>
