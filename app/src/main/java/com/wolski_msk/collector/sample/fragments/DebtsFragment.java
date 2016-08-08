@@ -9,42 +9,42 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.PopupMenu;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.wolski_msk.collector.sample.R;
-import com.wolski_msk.collector.sample.adapters.ViewPagerAdapter;
 import com.wolski_msk.collector.sample.activity.DialogActivity;
+import com.wolski_msk.collector.sample.adapters.ViewPagerAdapter;
+import com.wolski_msk.collector.sample.utils.utils;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by wpiot on 27.07.2016.
  */
-public class DebtsFragment extends Fragment implements View.OnClickListener{
+public class DebtsFragment extends Fragment implements View.OnClickListener {
 
-    public static String [] lend ={"Android dfd","PHP fdsf","Jquery fsfsd","JavaScript fdsfs"};
+    public static String [] lend ={"ZZAndroid dfd","BPBBHP fdsf","Jquery fsfsd","JavaScript fdsfs"};
     public static String [] borrowed ={"Piotr Wolski","Wojtek","Kuba Piorek","Magda kruk","Elo Melo"};
 
     FloatingActionButton addFab;
     ListView lv_sort;
     TabLayout tabLayout;
     ViewPager viewPager;
-
+    ViewPagerAdapter viewPagerAdapter;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-
-
-
     }
+
+
 
 
     public static Fragment newInstance(String jsondata)
@@ -78,7 +78,6 @@ public class DebtsFragment extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.debts, container, false);
 
-
          addFab = (FloatingActionButton)view.findViewById(R.id.add_new_debt_button) ;
         addFab.setOnClickListener(this);
 
@@ -86,7 +85,7 @@ public class DebtsFragment extends Fragment implements View.OnClickListener{
         tabLayout = (TabLayout) view.findViewById(R.id.tabs);
         viewPager = (ViewPager) view.findViewById(R.id.viewpager);
 
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getContext(),getChildFragmentManager(), borrowed, lend);
+         viewPagerAdapter = new ViewPagerAdapter(getContext(),getChildFragmentManager(), borrowed, lend);
         viewPager.setAdapter(viewPagerAdapter);
 
 
@@ -95,14 +94,16 @@ public class DebtsFragment extends Fragment implements View.OnClickListener{
 
         lv_sort = (ListView) view.findViewById(R.id.listView2);
 
-        final ArrayList<String> listItems = new ArrayList<>();
-        listItems.add(this.getString(R.string.date));
-        listItems.add("Name");
-        listItems.add("Amount");
-        listItems.add("Title");
-        final ArrayAdapter<String> adapter = new ArrayAdapter<>( getContext(), android.R.layout.simple_list_item_1, listItems );
-        lv_sort.setAdapter( adapter );
-        lv_sort.setVisibility(View.INVISIBLE);
+//        final ArrayList<String> listItems = new ArrayList<>();
+//        listItems.add(this.getString(R.string.date));
+//        listItems.add("Name");
+//        listItems.add("Amount");
+//        listItems.add("Title");
+//
+//        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, listItems);
+//
+//        lv_sort.setAdapter( adapter );
+//        lv_sort.setVisibility(View.INVISIBLE);
 
 
         view.findViewById(R.id.imageButton).setOnClickListener(this);
@@ -112,13 +113,17 @@ public class DebtsFragment extends Fragment implements View.OnClickListener{
 
 
 
+
     @Override
     public void onClick(View v) {
         int id = v.getId();
         switch (id) {
 
             case R.id.imageButton:
-                lv_sort.setVisibility(lv_sort.getVisibility() == View.INVISIBLE?View.VISIBLE:View.INVISIBLE);
+
+                showDeviceMenu(v);
+
+            //    lv_sort.setVisibility(lv_sort.getVisibility() == View.INVISIBLE?View.VISIBLE:View.INVISIBLE);
                 break;
 
             case R.id.add_new_debt_button:
@@ -129,8 +134,57 @@ public class DebtsFragment extends Fragment implements View.OnClickListener{
                 }
 
                 startActivityForResult(intent, 100, options.toBundle());
-                return;
+
 
         }
     }
+
+
+
+    public void showDeviceMenu(View v) {
+        PopupMenu popup = new PopupMenu(getContext(), v);
+        popup.inflate(R.menu.sort_menu);
+
+
+
+        getActivity().invalidateOptionsMenu();
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.date:
+
+                        if(viewPagerAdapter != null && !utils.checkSorting(lend)) {
+                            Arrays.sort(lend);
+                        Toast.makeText(getContext(), "jeden", Toast.LENGTH_SHORT).show();
+                            viewPager.setAdapter(viewPagerAdapter);
+                            viewPagerAdapter.notifyDataSetChanged();
+
+                        }
+                        return true;
+                    case R.id.value:
+
+                        if(viewPagerAdapter != null && !utils.checkSorting(borrowed)) {
+
+                            Arrays.sort(borrowed);
+
+                            Toast.makeText(getContext(), "dwa", Toast.LENGTH_SHORT).show();
+                            viewPager.setAdapter( viewPagerAdapter );
+                            viewPagerAdapter.notifyDataSetChanged();
+
+                        }
+
+
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+
+        });
+        popup.show();
+    }
+
+
 }

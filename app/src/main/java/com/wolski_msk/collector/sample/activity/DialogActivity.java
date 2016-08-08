@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -20,7 +21,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Interpolator;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.wolski_msk.collector.sample.R;
@@ -28,11 +32,14 @@ import com.wolski_msk.collector.sample.transition.MorphDialogToFab;
 import com.wolski_msk.collector.sample.transition.MorphFabToDialog;
 import com.wolski_msk.collector.sample.transition.MorphTransition;
 
+import org.w3c.dom.Text;
+
 
 public class DialogActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ViewGroup container;
-
+    TextView borrow_money_label;
+    ViewFlipper viewFlipper;
     int RESULT_LOAD_IMAGE =0;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {
@@ -48,36 +55,76 @@ public class DialogActivity extends AppCompatActivity implements View.OnClickLis
 
         container = (ViewGroup) findViewById(R.id.container);
 
+        container.findViewById(R.id.next).setOnClickListener(this);
+        container.findViewById(R.id.close).setOnClickListener(this);
+        container.findViewById(R.id.prev).setOnClickListener(this);
+        borrow_money_label = (TextView)findViewById(R.id.initial_label);
 
-        verifyStoragePermissions(this);
+        ( (TabLayout)findViewById(R.id.borrow_lend_tab)).setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                String mon_obj =  ((TabLayout)findViewById(R.id.money_object_tab)).getSelectedTabPosition() ==0?"money.":"object.";
+                borrow_money_label.setText(tab.getPosition() == 0 ? "You borrowed " + mon_obj: "You lend " + mon_obj ) ;
+
+            }
 
 
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+        ( (TabLayout)findViewById(R.id.money_object_tab)).setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                String bor_len =  ((TabLayout)findViewById(R.id.borrow_lend_tab)).getSelectedTabPosition() ==0?"borrowed ":"lend ";
+                borrow_money_label.setText(tab.getPosition() == 0 ? "You "+ bor_len + "money.": "You " + bor_len + "object." ) ;
+
+            }
+
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
 
         setupSharedEelementTransitions2();
 
-        final ViewFlipper viewFlipper = (ViewFlipper)findViewById(R.id.flipper);
-
-        View.OnClickListener dismissListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if((viewFlipper != null ? viewFlipper.getDisplayedChild() : 0) ==0){
-                    viewFlipper.setInAnimation(getApplication(), R.anim.from_down_to_up);
-                    viewFlipper.setOutAnimation(getApplication(), R.anim.from_up_to_down);
-
-                    viewFlipper.showNext();
-                }
-                else {
-                    viewFlipper.setOutAnimation(getApplication(), R.anim.from_up_to_down);
-                    viewFlipper.setInAnimation(getApplication(), R.anim.from_down_to_up);
-
-                    viewFlipper.showPrevious();
-                }
-
-                //dismiss();
-            }
-        };
-        container.setOnClickListener(dismissListener);
-        container.findViewById(R.id.close).setOnClickListener(dismissListener);
+         viewFlipper = (ViewFlipper)findViewById(R.id.flipper);
+//
+//        View.OnClickListener dismissListener = new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if((viewFlipper != null ? viewFlipper.getDisplayedChild() : 0) ==0){
+//                    viewFlipper.setInAnimation(getApplication(), R.anim.from_down_to_up);
+//                    viewFlipper.setOutAnimation(getApplication(), R.anim.from_up_to_down);
+//
+//                    viewFlipper.showNext();
+//                }
+//                else {
+//                    viewFlipper.setOutAnimation(getApplication(), R.anim.from_up_to_down);
+//                    viewFlipper.setInAnimation(getApplication(), R.anim.from_down_to_up);
+//
+//                    viewFlipper.showPrevious();
+//                }
+//
+//                //dismiss();
+//            }
+//        };
+       // container.setOnClickListener(dismissListener);
+      //  container.findViewById(R.id.close).setOnClickListener(dismissListener);
 
 
 
@@ -131,10 +178,46 @@ public class DialogActivity extends AppCompatActivity implements View.OnClickLis
         switch (id)
         {
             case R.id.button:
+
+                verifyStoragePermissions(this);
+
                 Intent i = new Intent(
                         Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 
                 startActivityForResult(i, RESULT_LOAD_IMAGE);
+                break;
+
+            case R.id.close:
+                dismiss();
+                break;
+
+            case R.id.next:
+
+                if(viewFlipper.getDisplayedChild() ==0) {
+
+                    if(((TabLayout)findViewById(R.id.money_object_tab)).getSelectedTabPosition() ==0) {
+
+                        ((TextView)findViewById(R.id.text_label_money)).setText(borrow_money_label.getText());
+                        viewFlipper.showNext();
+                    }
+                    else {
+                        ((TextView)findViewById(R.id.text_label_object)).setText(borrow_money_label.getText());
+                        viewFlipper.setDisplayedChild(2);
+
+                    }
+
+                    findViewById(R.id.prev).setEnabled(true);
+                    ((Button)v).setText("Submit");
+                }
+                else
+                {
+                    Toast.makeText(DialogActivity.this, "Congrats you added an item", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case R.id.prev:
+                ((Button)findViewById(R.id.next)).setText("Next");
+                v.setEnabled(false);
+                viewFlipper.setDisplayedChild(0);
 
         }
 
@@ -159,9 +242,6 @@ public class DialogActivity extends AppCompatActivity implements View.OnClickLis
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-
-
-
         if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
             Uri selectedImage = data.getData();
             String[] filePathColumn = {MediaStore.Images.Media.DATA};
@@ -176,15 +256,7 @@ public class DialogActivity extends AppCompatActivity implements View.OnClickLis
 
             ImageView imageView = (ImageView) findViewById(R.id.imageView);
 
-            Bitmap outputFile = null;
-            try {
-                 outputFile = BitmapFactory.decodeFile(picturePath);
-            }
-            catch (Exception exp)
-            {
-                exp.printStackTrace();
-            }
-            imageView.setImageBitmap(outputFile);
+            imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
 
         }
 

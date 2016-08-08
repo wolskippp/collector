@@ -9,6 +9,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -53,13 +55,14 @@ public class LoginActivity extends Activity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(this.getApplicationContext());
         setContentView(login);
+
+
         ButterKnife.bind(this);
         loginButton.setReadPermissions("user_friends");
         backToAppButton.setOnClickListener(this);
 
        if(isLoggedIn() != null)
        {
-
            getFaceBookFriends(isLoggedIn());
            startActivity(new Intent(this,MainActivity.class));
        }

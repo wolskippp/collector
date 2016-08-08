@@ -6,7 +6,11 @@
     <ListView
         android:id="@+id/listView"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
+        android:layout_height="fill_parent"
+        android:dividerHeight="2dp"
+        android:drawSelectorOnTop="true"
+        android:touchscreenBlocksFocus="false"
+        android:choiceMode="singleChoice">
     </ListView>
 
 </LinearLayout>
