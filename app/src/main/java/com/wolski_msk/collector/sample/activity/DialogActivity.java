@@ -41,7 +41,10 @@ public class DialogActivity extends AppCompatActivity implements View.OnClickLis
     TextView borrow_money_label;
     ViewFlipper viewFlipper;
     int RESULT_LOAD_IMAGE =0;
+    int RESULT_FILL_CONTACTS =1;
+    boolean new_phone = false;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
+
     private static String[] PERMISSIONS_STORAGE = {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE
@@ -53,8 +56,16 @@ public class DialogActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dialog);
 
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+            new_phone = true;
+
+
         container = (ViewGroup) findViewById(R.id.container);
 
+
+        viewFlipper = (ViewFlipper)container.findViewById(R.id.flipper);
         container.findViewById(R.id.next).setOnClickListener(this);
         container.findViewById(R.id.close).setOnClickListener(this);
         container.findViewById(R.id.prev).setOnClickListener(this);
@@ -63,12 +74,11 @@ public class DialogActivity extends AppCompatActivity implements View.OnClickLis
         ( (TabLayout)findViewById(R.id.borrow_lend_tab)).setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                String mon_obj =  ((TabLayout)findViewById(R.id.money_object_tab)).getSelectedTabPosition() ==0?"money.":"object.";
-                borrow_money_label.setText(tab.getPosition() == 0 ? "You borrowed " + mon_obj: "You lend " + mon_obj ) ;
+                String bor_len =  tab.getPosition() ==0?getString(R.string.borrow_label).toLowerCase():getString(R.string.lend_label).toLowerCase();
+                 String mon_obj =  ((TabLayout)findViewById(R.id.money_object_tab)).getSelectedTabPosition() ==0?getResources().getString(R.string.money_label).toLowerCase():getResources().getString(R.string.object_label).toLowerCase();
+                borrow_money_label.setText(getString(R.string.stage_1_adding, bor_len,mon_obj) ) ;
 
             }
-
-
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
 
@@ -83,11 +93,11 @@ public class DialogActivity extends AppCompatActivity implements View.OnClickLis
         ( (TabLayout)findViewById(R.id.money_object_tab)).setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                String bor_len =  ((TabLayout)findViewById(R.id.borrow_lend_tab)).getSelectedTabPosition() ==0?"borrowed ":"lend ";
-                borrow_money_label.setText(tab.getPosition() == 0 ? "You "+ bor_len + "money.": "You " + bor_len + "object." ) ;
+                String bor_len =  ((TabLayout)findViewById(R.id.borrow_lend_tab)).getSelectedTabPosition() ==0?getString(R.string.borrow_label).toLowerCase():getString(R.string.lend_label).toLowerCase();
+                String mon_obj = (tab.getPosition() ==0?  getString(R.string.money_label).toLowerCase(): getString(R.string.object_label).toLowerCase());
+                borrow_money_label.setText(getString(R.string.stage_1_adding, bor_len,mon_obj) ) ;
 
             }
-
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
@@ -100,32 +110,9 @@ public class DialogActivity extends AppCompatActivity implements View.OnClickLis
             }
         });
 
-        setupSharedEelementTransitions2();
 
-         viewFlipper = (ViewFlipper)findViewById(R.id.flipper);
-//
-//        View.OnClickListener dismissListener = new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if((viewFlipper != null ? viewFlipper.getDisplayedChild() : 0) ==0){
-//                    viewFlipper.setInAnimation(getApplication(), R.anim.from_down_to_up);
-//                    viewFlipper.setOutAnimation(getApplication(), R.anim.from_up_to_down);
-//
-//                    viewFlipper.showNext();
-//                }
-//                else {
-//                    viewFlipper.setOutAnimation(getApplication(), R.anim.from_up_to_down);
-//                    viewFlipper.setInAnimation(getApplication(), R.anim.from_down_to_up);
-//
-//                    viewFlipper.showPrevious();
-//                }
-//
-//                //dismiss();
-//            }
-//        };
-       // container.setOnClickListener(dismissListener);
-      //  container.findViewById(R.id.close).setOnClickListener(dismissListener);
-
+        if (new_phone)
+              setupSharedEelementTransitions2();
 
 
 
@@ -166,8 +153,12 @@ public class DialogActivity extends AppCompatActivity implements View.OnClickLis
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void dismiss() {
-        setResult(Activity.RESULT_CANCELED);
-        finishAfterTransition();
+        if(new_phone) {
+            setResult(Activity.RESULT_CANCELED);
+            finishAfterTransition();
+        }
+        else
+            finish();
     }
 
     @Override
@@ -207,15 +198,16 @@ public class DialogActivity extends AppCompatActivity implements View.OnClickLis
                     }
 
                     findViewById(R.id.prev).setEnabled(true);
-                    ((Button)v).setText("Submit");
+                    ((Button)v).setText(R.string.submit);
                 }
                 else
                 {
                     Toast.makeText(DialogActivity.this, "Congrats you added an item", Toast.LENGTH_SHORT).show();
+                    dismiss();
                 }
                 break;
             case R.id.prev:
-                ((Button)findViewById(R.id.next)).setText("Next");
+                ((Button)findViewById(R.id.next)).setText(R.string.next);
                 v.setEnabled(false);
                 viewFlipper.setDisplayedChild(0);
 
@@ -223,7 +215,7 @@ public class DialogActivity extends AppCompatActivity implements View.OnClickLis
 
     }
 
-    public static void verifyStoragePermissions(Activity activity) {
+    private  void verifyStoragePermissions(Activity activity) {
         // Check if we have write permission
         int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
@@ -242,23 +234,33 @@ public class DialogActivity extends AppCompatActivity implements View.OnClickLis
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
+        if(requestCode == RESULT_LOAD_IMAGE)
+                getImageFromStorage(resultCode,data);
+
+
+    }
+
+    private void getImageFromStorage( int resultCode, Intent data)
+    {
+        if (resultCode == RESULT_OK && null != data) {
             Uri selectedImage = data.getData();
             String[] filePathColumn = {MediaStore.Images.Media.DATA};
 
             Cursor cursor = getContentResolver().query(selectedImage,
                     filePathColumn, null, null, null);
-            cursor.moveToFirst();
+            if (cursor != null) {
+                cursor.moveToFirst();
 
-            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-            String picturePath = cursor.getString(columnIndex);
-            cursor.close();
 
-            ImageView imageView = (ImageView) findViewById(R.id.imageView);
+                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                String picturePath = cursor.getString(columnIndex);
+                cursor.close();
 
-            imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+                ImageView imageView = (ImageView) findViewById(R.id.imageView);
 
+                imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+            }
         }
-
     }
+
 }

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NotificationCompatSideChannelService;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.PopupMenu;
 import android.view.LayoutInflater;
@@ -106,7 +107,7 @@ public class DebtsFragment extends Fragment implements View.OnClickListener {
 //        lv_sort.setVisibility(View.INVISIBLE);
 
 
-        view.findViewById(R.id.imageButton).setOnClickListener(this);
+        view.findViewById(R.id.sortDebtsImageButton).setOnClickListener(this);
 
         return view;
     }
@@ -119,7 +120,7 @@ public class DebtsFragment extends Fragment implements View.OnClickListener {
         int id = v.getId();
         switch (id) {
 
-            case R.id.imageButton:
+            case R.id.sortDebtsImageButton:
 
                 showDeviceMenu(v);
 
@@ -131,9 +132,14 @@ public class DebtsFragment extends Fragment implements View.OnClickListener {
                 ActivityOptions options = null;
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     options = ActivityOptions.makeSceneTransitionAnimation(getActivity(), addFab, getString(R.string.transition_dialog));
+                    startActivityForResult(intent, 100, options.toBundle());
+                }
+                else
+                {
+                    startActivity(intent);
                 }
 
-                startActivityForResult(intent, 100, options.toBundle());
+
 
 
         }
@@ -174,8 +180,6 @@ public class DebtsFragment extends Fragment implements View.OnClickListener {
                             viewPagerAdapter.notifyDataSetChanged();
 
                         }
-
-
                         return true;
                     default:
                         return false;

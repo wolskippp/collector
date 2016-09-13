@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/text_label_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Sample Text"
+        android:textAppearance="?android:textAppearanceLarge"/>
+
+    <EditText
+        android:hint="@string/object_name"
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:id="@+id/name_money"
+        />
+
+
+    <AutoCompleteTextView
+        android:id="@+id/toNumber"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:textColor="#000000"
+        android:hint="test autocomplete"
+        android:textColorHighlight="#000000"
+        android:textColorLink="#000000"
+        android:textStyle="bold"
+        android:width="250dip" />
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+
+
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:layout_weight="7"
+            android:hint="@string/name_of_the_person"
+            android:ems="10"
+
+            android:layout_gravity="center_horizontal" />
+
+        <EditText
+            android:hint="@string/z"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText3"
+            android:elegantTextHeight="false"
+
+            android:singleLine="true" />
+
+    </LinearLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:hint="Description"
+
+        android:layout_height="wrap_content" />
+
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:textSize="23sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="You borrowed car from Martin Bar"/>
+
+
+</LinearLayout>

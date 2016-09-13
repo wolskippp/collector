@@ -3,8 +3,8 @@
     <style name="AppTheme" parent="Theme.Collector"/>
 
     <style name="Theme.Collector" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:colorPrimaryDark">@color/guillotine_background</item>
-        <item name="android:colorPrimary">@color/guillotine_background_dark</item>
+        <!--<item name="android:colorPrimaryDark">@color/carbon_white</item>-->
+        <!--<item name="android:colorPrimary">@color/carbon_white_70</item>-->
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>

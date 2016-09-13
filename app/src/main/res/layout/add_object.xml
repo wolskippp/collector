@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:id="@+id/text_label_object"
+
+        android:text="Sample Text"
+        android:textAppearance="?android:textAppearanceLarge"/>
+
+    <android.support.design.widget.TextInputLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        >
+        <EditText
+            android:hint="@string/object_name"
+            android:layout_width="match_parent"
+            android:inputType="textAutoComplete"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText2"
+            android:elegantTextHeight="false" />
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textAutoComplete"
+            android:layout_weight="7"
+            android:hint="@string/name_of_the_person"
+
+            android:ems="10"
+            android:id="@+id/editText"
+            android:layout_gravity="center_horizontal" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:layout_width="match_parent"
+            android:hint="@string/description"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText4" />
+
+    </android.support.design.widget.TextInputLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:onClick="onClick"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="@string/add_picture"
+            android:src="@drawable/ic_add_a_photo_white_18dp"
+            android:inputType="textCapCharacters"
+            android:id="@+id/button" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView"
+            />
+    </LinearLayout>
+
+</LinearLayout>

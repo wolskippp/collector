@@ -32,14 +32,14 @@
             android:text="@string/sort"
             android:textSize="15sp"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/imageButton"
-            android:layout_toStartOf="@+id/imageButton"
+            android:layout_toLeftOf="@+id/sortDebtsImageButton"
+            android:layout_toStartOf="@+id/sortDebtsImageButton"
             android:layout_marginRight="3dp"
             />
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/imageButton"
+            android:id="@+id/sortDebtsImageButton"
             android:layout_marginRight="3dp"
             android:background="?android:attr/selectableItemBackground"
             android:src="@drawable/ic_sort_white_36dp"
@@ -62,8 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+             />
 
         <ListView
             android:background="@color/guillotine_background"

@@ -34,5 +34,8 @@ public class LogOutFragment extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
 
     }
+
+
+
 }
 

@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.wolski_msk.collector.sample.R;
+import com.wolski_msk.collector.sample.utils.utils;
 
 import java.io.FileInputStream;
 
@@ -28,9 +29,6 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-
-
     }
 
     @Override
@@ -39,7 +37,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
 
        String name = PreferenceManager.getDefaultSharedPreferences(getContext()).getString("my_name", "no name found");
 
-        ((ImageView)view.findViewById(R.id.profile_image)).setImageBitmap(getImageBitmap(getContext(),"profile_pic","bmp"));
+        ((ImageView)view.findViewById(R.id.profile_image)).setImageBitmap(utils.getImageBitmap(getContext(),"profile_pic","bmp"));
         ((TextView)view.findViewById(R.id.profile_name)).setText(name);
 
         return view;
@@ -50,18 +48,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
 
     }
-    public Bitmap getImageBitmap(Context context, String name, String extension){
-        name=name+"."+extension;
-        try{
-            FileInputStream fis = context.openFileInput(name);
-            Bitmap b = BitmapFactory.decodeStream(fis);
-            fis.close();
-            return b;
-        }
-        catch(Exception e){
-        }
-        return null;
-    }
+
+
 
 }
 

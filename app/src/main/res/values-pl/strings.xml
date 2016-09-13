@@ -6,6 +6,28 @@
     <string name="settings">USTAWIENIA</string>
     <string name="borrow_label">WZIĄŁEŚ</string>
     <string name="lend_label">DAŁEŚ</string>
+    <string name="money_label">PIENIĄDZE</string>
+    <string name="object_label">PRZEDMIOT</string>
     <string name="log_out">WYLOGUJ SIĘ</string>
     <string name="sort">Sortuj:</string>
+    <string name="date">Data</string>
+    <string name="next">Dalej</string>
+    <string name="prev">Poprzedni</string>
+    <string name="close">zamknij</string>
+    <string name="hint_your_email">Opcjonalne</string>
+    <string name="hint_your_name">n.p. Wojtek</string>
+    <string name="label_your_email">E-mail</string>
+    <string name="label_your_name">Imię</string>
+    <string name="object_name">Nazwa przedmiotu</string>
+    <string name="name_of_the_person">Imię osoby</string>
+    <string name="z">kwota</string>
+    <string name="submit">Zatwierdź</string>
+    <string name="add_picture">Dodać zdjęcie ?</string>
+    <string name="description">Opis</string>
+
+
+    <string name="stage_1_adding">%1$s %2$s. </string>
+    <string name="stage_2_adding_borrow">%1$s %2$s od %3$s </string>
+    <string name="stage_2_adding_lend">%1$s %2$s dla %3$s </string>
+    <string name="facebook_app_id">1559470051028990</string>
 </resources>
