@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="facebook_app_id">1559470051028990</string>
     <string name="app_name">Collector</string>
     <string name="feed">DŁUGI</string>
     <string name="profile">PROFIL</string>
@@ -23,11 +24,11 @@
     <string name="z">kwota</string>
     <string name="submit">Zatwierdź</string>
     <string name="add_picture">Dodać zdjęcie ?</string>
-    <string name="description">Opis</string>
-
+    <string name="description">Opis (opcjonalne)</string>
 
     <string name="stage_1_adding">%1$s %2$s. </string>
     <string name="stage_2_adding_borrow">%1$s %2$s od %3$s </string>
     <string name="stage_2_adding_lend">%1$s %2$s dla %3$s </string>
-    <string name="facebook_app_id">1559470051028990</string>
+
+    <string name="no_name_nav_bar">Ustaw imię w ustawianiach</string>
 </resources>

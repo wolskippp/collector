@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="10dp">
 
 
     <TextView
@@ -21,19 +24,6 @@
         />
 
 
-    <AutoCompleteTextView
-        android:id="@+id/toNumber"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dip"
-        android:layout_marginRight="10dip"
-        android:textColor="#000000"
-        android:hint="test autocomplete"
-        android:textColorHighlight="#000000"
-        android:textColorLink="#000000"
-        android:textStyle="bold"
-        android:width="250dip" />
-
 
 
 
@@ -46,8 +36,9 @@
 
 
 
-        <EditText
+        <AutoCompleteTextView
             android:layout_width="0dp"
+            android:id="@+id/autoCompleteMoney"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:layout_weight="7"
@@ -69,9 +60,9 @@
 
     <EditText
         android:layout_width="match_parent"
-        android:hint="Description"
-
-        android:layout_height="wrap_content" />
+        android:hint="@string/description"
+        android:layout_height="wrap_content"
+        android:maxLines="4"/>
 
 
     <TextView
@@ -82,6 +73,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         android:text="You borrowed car from Martin Bar"/>
 
 

@@ -5,6 +5,7 @@ import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,8 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -95,25 +98,22 @@ public class DebtsFragment extends Fragment implements View.OnClickListener {
 
         lv_sort = (ListView) view.findViewById(R.id.listView2);
 
-//        final ArrayList<String> listItems = new ArrayList<>();
-//        listItems.add(this.getString(R.string.date));
-//        listItems.add("Name");
-//        listItems.add("Amount");
-//        listItems.add("Title");
-//
-//        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, listItems);
-//
-//        lv_sort.setAdapter( adapter );
-//        lv_sort.setVisibility(View.INVISIBLE);
-
 
         view.findViewById(R.id.sortDebtsImageButton).setOnClickListener(this);
 
         return view;
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        final Animation mAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.fab_reveal);
+        addFab.setVisibility(View.VISIBLE);
+        addFab.startAnimation(mAnimation);
 
 
+    }
 
     @Override
     public void onClick(View v) {
@@ -128,6 +128,8 @@ public class DebtsFragment extends Fragment implements View.OnClickListener {
                 break;
 
             case R.id.add_new_debt_button:
+
+
                 Intent intent = new Intent(getActivity(), DialogActivity.class);
                 ActivityOptions options = null;
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -135,16 +137,14 @@ public class DebtsFragment extends Fragment implements View.OnClickListener {
                     startActivityForResult(intent, 100, options.toBundle());
                 }
                 else
-                {
                     startActivity(intent);
-                }
+
 
 
 
 
         }
     }
-
 
 
     public void showDeviceMenu(View v) {

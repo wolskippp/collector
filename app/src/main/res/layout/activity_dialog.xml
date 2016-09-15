@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".activity.DialogActivity">
 
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <LinearLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
@@ -92,10 +94,10 @@
         </LinearLayout>
 
 
-                <include layout="@layout/add_money"/>
+                <include android:id="@+id/add_money_layout" layout="@layout/add_money"/>
 
 
-                <include layout="@layout/add_object"/>
+                <include android:id="@+id/add_object_layout" layout="@layout/add_object"/>
 
 
         </ViewFlipper>
@@ -147,6 +149,6 @@
         android:textAppearance="?android:textAppearanceMedium"/>
 
     </LinearLayout>
-
+</ScrollView>
 
 </FrameLayout>

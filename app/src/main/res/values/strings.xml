@@ -33,11 +33,12 @@
     <string name="submit">Submit</string>
 
     <string name="add_picture">Add picture ?</string>
-    <string name="description">Description</string>
+    <string name="description">Description (optional)</string>
 
     <string name="stage_1_adding">You %1$s %2$s. </string>
     <string name="stage_2_adding_borrow">You %1$s %2$s from %3$s </string>
     <string name="stage_2_adding_lend">You %1$s %2$s to %3$s </string>
+    <string name="no_name_nav_bar">Set name in Settings</string>
 
 
 </resources>

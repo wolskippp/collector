@@ -3,9 +3,10 @@ package com.wolski_msk.collector.sample.utils;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.provider.ContactsContract;
-import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,38 +15,93 @@ import java.util.List;
 public class SingletonSettings {
     private static SingletonSettings instance = null;
 
+    public  enum LoginMethod { facebook,google,collector,not_at_all}
+
+
+    LoginMethod curr_method ;
+    Bitmap profilePic = null;
+    String profileName = null;
     List<String> phoneContactsNames = null;
 
-    protected SingletonSettings(Context context) {
-        fillWithContactNames(context);
+
+    protected SingletonSettings( ) {
     }
-    public static SingletonSettings getInstance(Context context) {
+
+
+    public static SingletonSettings getInstance( ) {
         if(instance == null) {
-            instance = new SingletonSettings(context);
+
+            instance = new SingletonSettings();
         }
         return instance;
     }
 
 
-    private void fillWithContactNames(Context context)
+
+
+    public List<String> getPhoneContactsNames(Context context) {
+
+        return phoneContactsNames !=null && !phoneContactsNames.isEmpty()  ?phoneContactsNames: fillWithContactNames(context) ;
+    }
+
+
+    public LoginMethod getLoginMethod() {
+        return curr_method;
+    }
+
+    public void setLoginMethod(LoginMethod curr_method) {
+        this.curr_method = curr_method;
+    }
+
+
+
+    public Bitmap getProfilePic() {
+        return profilePic;
+    }
+
+    public void setProfilePic(Bitmap profilePic) {
+        this.profilePic = profilePic;
+    }
+
+    public String getProfileName() {
+        return profileName;
+    }
+
+    public void setProfileName(String profileName) {
+        this.profileName = profileName;
+    }
+
+    private List<String> fillWithContactNames(Context context)
     {
-        phoneContactsNames.clear();
+
+
+        if(phoneContactsNames != null)
+            phoneContactsNames.clear();
+        else
+            phoneContactsNames = new ArrayList<>();
+
 
         ContentResolver cr = context.getContentResolver();
         Cursor cur = cr.query(ContactsContract.Contacts.CONTENT_URI,
                 null, null, null, null);
 
-        assert cur != null;
-        if (cur.getCount() > 0) {
-            while (cur.moveToNext()) {
 
-                String name = cur.getString(cur.getColumnIndex(
-                        ContactsContract.Contacts.DISPLAY_NAME));
+            if ((cur != null ? cur.getCount() : 0) > 0) {
+                assert cur != null;
+                while (cur.moveToNext()) {
 
-                phoneContactsNames.add(name);
+                    String name = cur.getString(cur.getColumnIndex(
+                            ContactsContract.Contacts.DISPLAY_NAME));
 
+                    phoneContactsNames.add(name);
+
+                }
+
+                cur.close();
             }
-        }
+
+        return phoneContactsNames;
+
     }
 
 
