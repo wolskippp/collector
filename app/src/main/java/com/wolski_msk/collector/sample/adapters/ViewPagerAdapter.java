@@ -13,12 +13,16 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     private String [] borrow;
     private String [] lend;
+    private String [] borrowObj;
+    private String [] lendObj;
     private Context context;
 
-    public ViewPagerAdapter(Context context, FragmentManager fm, String []namesBorrow, String[] namesLend) {
+    public ViewPagerAdapter(Context context, FragmentManager fm, String []namesBorrow, String[] namesLend, String []borrowObj, String [] lendObj) {
         super(fm);
         this.borrow = namesBorrow;
         this.lend = namesLend;
+        this.borrowObj = borrowObj;
+        this.lendObj = lendObj;
         this.context = context;
     }
 
@@ -34,10 +38,16 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
        return (position ==0) ?
-          TabFragment.newInstance(this.borrow):
-          TabFragment.newInstance(this.lend);
+          TabFragment.newInstance(this.borrow,0):
+          TabFragment.newInstance(this.lend,1);
+
+
 
     }
+
+
+
+
 
     @Override
     public int getCount() {

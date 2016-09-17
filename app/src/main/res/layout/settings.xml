@@ -8,5 +8,14 @@
         android:layout_height="wrap_content"
         android:text="ELO MELO KAWALERO"
         android:id="@+id/textView"
+        android:layout_gravity="center_horizontal"
+        android:textColor="?attr/primaryTextColor"/>
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Night mode"
+        android:textColor="?attr/primaryTextColor"
+        android:id="@+id/nightMode"
         android:layout_gravity="center_horizontal" />
 </LinearLayout>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/borrow_lend_tab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:layout_marginBottom="10dp">
+            <android.support.design.widget.TabItem
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/borrow_label"/>
+            <android.support.design.widget.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/lend_label"/>
+        </android.support.design.widget.TabLayout>
+
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/money_object_tab"
+            android:clickable="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.design.widget.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/money_label"/>
+            <android.support.design.widget.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/object_label"/>
+        </android.support.design.widget.TabLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:layout_marginTop="50dp"
+            android:textSize="25sp"
+            android:text="You borrowed money"
+            android:id="@+id/initial_label"
+            android:layout_gravity="center_horizontal" />
+
+
+
+
+</LinearLayout>

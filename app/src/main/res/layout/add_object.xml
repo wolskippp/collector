@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
     android:layout_marginTop="10dp">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
 
+        >
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,52 +24,58 @@
         android:text="Sample Text"
         android:textAppearance="?android:textAppearanceLarge"/>
 
-    <android.support.design.widget.TextInputLayout
+    <android.support.design.widget.TextInputEditText
 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        >
-        <EditText
+
             android:hint="@string/object_name"
             android:layout_width="match_parent"
-            android:inputType="textAutoComplete"
+            android:inputType="text"
             android:layout_height="wrap_content"
             android:id="@+id/editText2"
             android:elegantTextHeight="false" />
-    </android.support.design.widget.TextInputLayout>
 
 
-    <android.support.design.widget.TextInputLayout
 
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <AutoCompleteTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textAutoComplete"
+            android:layout_width="0dp"
             android:layout_weight="7"
+            android:layout_height="match_parent"
+            android:inputType="textAutoComplete"
             android:hint="@string/name_of_the_person"
 
-            android:ems="10"
+
             android:id="@+id/autoCompleteObject"
             android:layout_gravity="center_horizontal" />
 
-    </android.support.design.widget.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <EditText
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+
+            android:id="@+id/amountInputLayout"
+                android:hint="@string/z"
+                android:singleLine="true" />
+
+
+
+    </LinearLayout>
+    <android.support.design.widget.TextInputEditText
+
+
             android:layout_width="match_parent"
             android:hint="@string/description"
             android:layout_height="wrap_content"
             android:id="@+id/editText4"
             android:maxLines="4"/>
 
-    </android.support.design.widget.TextInputLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -76,9 +90,36 @@
             android:layout_height="wrap_content"
 
             android:text="@string/add_picture"
-            android:src="@drawable/ic_add_a_photo_white_18dp"
             android:inputType="textCapCharacters"
-            android:id="@+id/button" />
+            android:id="@+id/addPictureButton" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/ImageButtonsLayout"
+            android:visibility="gone"
+            >
+        <ImageButton
+            android:id="@+id/camera"
+            android:onClick="onClick"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_add_a_photo_white_18dp"
+            android:text="Gallery"
+
+            />
+
+
+        <ImageButton
+            android:id="@+id/gallery"
+            android:onClick="onClick"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_collections_white_18dp"/>
+
+        </LinearLayout>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -86,5 +127,9 @@
             android:id="@+id/imageView"
             android:contentDescription="image" />
     </LinearLayout>
+   </LinearLayout>
 
-</LinearLayout>
+
+
+    </LinearLayout>
+</ScrollView>

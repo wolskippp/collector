@@ -76,6 +76,7 @@ public class utils {
         // Check if we have write permission
         int permission_images = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE );
         int permission_contacts = ActivityCompat.checkSelfPermission(activity, Manifest.permission.READ_CONTACTS );
+        int permission_camera = ActivityCompat.checkSelfPermission(activity, Manifest.permission.CAMERA );
 
 
         switch(CODE)
@@ -100,13 +101,27 @@ public class utils {
                 }
 
                 break;
+            case 3:
+
+                if(permission_camera!= PackageManager.PERMISSION_GRANTED)
+                {
+                    ActivityCompat.requestPermissions(activity,
+                            new String[]{Manifest.permission.CAMERA},
+                            MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+                }
+
+                break;
+
 
         }
 
         }
 
 
-
+public static String CapitalizeFirstLetter (String input)
+{
+  return input.substring(0, 1).toUpperCase() + input.substring(1);
+}
 
 
 }

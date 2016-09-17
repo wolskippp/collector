@@ -9,5 +9,22 @@
     <color name="fab_background_color">#383547</color>
     <color name="dialog_background_color">#383547</color>
     <color name="dialog_background_scrim">#99323232</color>
+    <color name="gray">#d3d3d3</color>
+    <color name="dark_purple">#271758</color>
+
+
+    <color name="primaryTextColor">#F4F4F6</color>
+    <color name="secondaryTextColor">#96F4F4F6</color>
+    <color name="backgroundCardColor">#FFFF</color>
+    <color name="dividerColor">#F2F2F3</color>
+
+    <color name="primaryTextColorDark">#33343B</color>
+    <color name="secondaryTextColorDark">#8033343B</color>
+    <color name="backgroundCardColorDark">#28292e</color>
+    <color name="dividerColorDark">#8033343B</color>
+
+
+
+
 
 </resources>

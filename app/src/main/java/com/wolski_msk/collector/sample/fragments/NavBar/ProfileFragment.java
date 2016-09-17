@@ -1,4 +1,4 @@
-package com.wolski_msk.collector.sample.fragments;
+package com.wolski_msk.collector.sample.fragments.NavBar;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.wolski_msk.collector.sample.R;
+import com.wolski_msk.collector.sample.utils.SingletonSettings;
 import com.wolski_msk.collector.sample.utils.utils;
 
 import java.io.FileInputStream;
@@ -20,9 +21,7 @@ import java.io.FileInputStream;
 /**
  * Created by wpiot on 27.07.2016.
  */
-public class ProfileFragment extends Fragment implements View.OnClickListener{
-
-
+public class ProfileFragment extends Fragment implements View.OnClickListener {
 
 
     @Override
@@ -33,22 +32,22 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.profile, container, false);
+        Bitmap profilePic = SingletonSettings.getInstance().getProfilePic();
+        String name = SingletonSettings.getInstance().getProfileName();
 
-       String name = PreferenceManager.getDefaultSharedPreferences(getContext()).getString("my_name", "no name found");
-
-        ((ImageView)view.findViewById(R.id.profile_image)).setImageBitmap(utils.getImageBitmap(getContext(),"profile_pic","bmp"));
-        ((TextView)view.findViewById(R.id.profile_name)).setText(name);
+        ((ImageView) view.findViewById(R.id.profile_image)).setImageBitmap(profilePic);
+        ((TextView) view.findViewById(R.id.profile_name)).setText(name);
 
         return view;
 
-        }
+    }
 
     @Override
     public void onClick(View v) {
 
     }
-
 
 
 }

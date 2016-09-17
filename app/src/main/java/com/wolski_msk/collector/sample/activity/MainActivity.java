@@ -10,20 +10,22 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wolski_msk.collector.sample.R;
-import com.wolski_msk.collector.sample.fragments.DebtsFragment;
-import com.wolski_msk.collector.sample.fragments.LogOutFragment;
-import com.wolski_msk.collector.sample.fragments.ProfileFragment;
-import com.wolski_msk.collector.sample.fragments.SettingsFragment;
+import com.wolski_msk.collector.sample.fragments.NavBar.DebtsFragment;
+import com.wolski_msk.collector.sample.fragments.NavBar.LogOutFragment;
+import com.wolski_msk.collector.sample.fragments.NavBar.ProfileFragment;
+import com.wolski_msk.collector.sample.fragments.NavBar.SettingsFragment;
 import com.wolski_msk.collector.sample.utils.SingletonSettings;
 
 import java.util.concurrent.Executors;
@@ -57,9 +59,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
+//        if (AppCompatDelegate.getDefaultNightMode()
+//                == AppCompatDelegate.MODE_NIGHT_YES) {
+//            setTheme(R.style.FeedActivityThemeDark);
+//        }
         Intent intent = getIntent();
         super.onCreate(savedInstanceState);
+
 
 
         setContentView(R.layout.activity);
@@ -82,10 +88,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             getSupportActionBar().setTitle(null);
         }
 
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
 
     }
 
-    private boolean InitializeNavBarHeader(View headerViewNavBar) {
+    private void InitializeNavBarHeader(View headerViewNavBar) {
         Bitmap profile_pic = SingletonSettings.getInstance().getProfilePic();
         String username = SingletonSettings.getInstance().getProfileName();
         boolean profilePicReady = false;
@@ -103,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         if (profilePicReady && profileUsernameReady)
-            return true;
+            return ;
 
 
 
@@ -117,8 +125,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 concurrentThreadToUpdateUIImageUsername();
 
         }
+        else
+        {
+            if (!profilePicReady)
+                setDefaultNavBarPicture();
+            if (!profileUsernameReady)
+                setDefaultNavBarUsername();
+        }
 
-        return true;
     }
 
 
@@ -191,7 +205,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 chosen_string = R.string.settings;
                 next_class = new SettingsFragment();
                 break;
-            case R.id.guillotine_view:
+
 
 
         }
@@ -298,12 +312,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         runOnUiThread(new Runnable() {
             public void run() {
-                View headerView = view.getHeaderView(0);
-                ((ImageView) headerView.findViewById(R.id.imageView)).setImageResource(R.drawable.ic_profile);
+                setDefaultNavBarPicture();
 
             }
         });
     }
+
+
+    private void setDefaultNavBarPicture()
+    {
+        View headerView = view.getHeaderView(0);
+        ((ImageView) headerView.findViewById(R.id.imageView)).setImageResource(R.drawable.default_profile);
+    }
+
+
 
 
     private void errorUpdateOnNavBarUsername() {
@@ -311,11 +333,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         runOnUiThread(new Runnable() {
             public void run() {
 
-                View headerView = view.getHeaderView(0);
-
-                ((TextView) headerView.findViewById(R.id.nameTextView)).setText(R.string.no_name_nav_bar);
+                setDefaultNavBarUsername();
             }
         });
+    }
+
+
+    private void setDefaultNavBarUsername()
+    {
+        View headerView = view.getHeaderView(0);
+        ((TextView) headerView.findViewById(R.id.nameTextView)).setText(R.string.no_name_nav_bar);
     }
 
 

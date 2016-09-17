@@ -1,4 +1,4 @@
-package com.wolski_msk.collector.sample.fragments;
+package com.wolski_msk.collector.sample.fragments.NavBar;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

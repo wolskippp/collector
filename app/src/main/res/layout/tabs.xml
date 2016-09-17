@@ -3,14 +3,35 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <carbon.widget.Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/money_label"/>
     <ListView
-        android:id="@+id/listView"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:id="@+id/listViewMoney"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:dividerHeight="2dp"
+        android:divider="?attr/dividerColor"
         android:drawSelectorOnTop="true"
         android:touchscreenBlocksFocus="false"
-        android:choiceMode="singleChoice">
-    </ListView>
+        android:choiceMode="singleChoice"
+        />
+
+    <carbon.widget.Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/object_label"/>
+    <ListView
+        android:id="@+id/listViewObjects"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:dividerHeight="2dp"
+        android:divider="?attr/dividerColor"
+        android:drawSelectorOnTop="true"
+        android:touchscreenBlocksFocus="false"
+        android:choiceMode="singleChoice"
+        />
 
 </LinearLayout>

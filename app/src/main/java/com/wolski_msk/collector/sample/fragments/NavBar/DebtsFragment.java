@@ -1,15 +1,16 @@
-package com.wolski_msk.collector.sample.fragments;
+package com.wolski_msk.collector.sample.fragments.NavBar;
 
 
 import android.app.ActivityOptions;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.NotificationCompatSideChannelService;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.PopupMenu;
 import android.view.LayoutInflater;
@@ -33,8 +34,10 @@ import java.util.Arrays;
  */
 public class DebtsFragment extends Fragment implements View.OnClickListener {
 
-    public static String [] lend ={"ZZAndroid dfd","BPBBHP fdsf","Jquery fsfsd","JavaScript fdsfs"};
-    public static String [] borrowed ={"Piotr Wolski","Wojtek","Kuba Piorek","Magda kruk","Elo Melo"};
+    public static String [] lend ={"ZZAndroid dfd","BPBBHP fdsf","JavaScript fdsfs"};
+    public static String [] borrowed ={"Wojtek","Kuba Piorek","Magda kruk","Elo Melo"};
+    public static String [] objLen ={"Piotr Wolski","Wojtek","Kuba Piorek","Elo Melo"};
+    public static String [] objBor ={"Wojtek","Kuba Piorek","Elo Melo"};
 
     FloatingActionButton addFab;
     ListView lv_sort;
@@ -82,14 +85,14 @@ public class DebtsFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.debts, container, false);
 
-         addFab = (FloatingActionButton)view.findViewById(R.id.add_new_debt_button) ;
+        addFab = (FloatingActionButton)view.findViewById(R.id.add_new_debt_button) ;
         addFab.setOnClickListener(this);
 
 
         tabLayout = (TabLayout) view.findViewById(R.id.tabs);
         viewPager = (ViewPager) view.findViewById(R.id.viewpager);
 
-         viewPagerAdapter = new ViewPagerAdapter(getContext(),getChildFragmentManager(), borrowed, lend);
+         viewPagerAdapter = new ViewPagerAdapter(getContext(),getChildFragmentManager(), borrowed, lend,objBor,objLen);
         viewPager.setAdapter(viewPagerAdapter);
 
 
@@ -130,9 +133,10 @@ public class DebtsFragment extends Fragment implements View.OnClickListener {
             case R.id.add_new_debt_button:
 
 
+
                 Intent intent = new Intent(getActivity(), DialogActivity.class);
                 ActivityOptions options = null;
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && !((PowerManager) getActivity().getSystemService(Context.POWER_SERVICE)).isPowerSaveMode()) {
                     options = ActivityOptions.makeSceneTransitionAnimation(getActivity(), addFab, getString(R.string.transition_dialog));
                     startActivityForResult(intent, 100, options.toBundle());
                 }
@@ -169,7 +173,7 @@ public class DebtsFragment extends Fragment implements View.OnClickListener {
 
                         }
                         return true;
-                    case R.id.value:
+                    case R.id.name:
 
                         if(viewPagerAdapter != null && !utils.checkSorting(borrowed)) {
 

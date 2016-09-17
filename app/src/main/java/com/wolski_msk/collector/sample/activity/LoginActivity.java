@@ -12,6 +12,7 @@ import android.preference.PreferenceManager;
 import android.view.View;
 
 import com.facebook.AccessToken;
+import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -69,9 +70,14 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
         callbackManager = CallbackManager.Factory.create();
 
+
+
+
+
         loginButton.registerCallback(callbackManager,
                 new FacebookCallback<LoginResult>() {
                     @Override
+
                     public void onSuccess(LoginResult loginResult) {
 
 
@@ -103,6 +109,23 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
                     }
                 });
+
+
+
+        new AccessTokenTracker() {
+            @Override
+            protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken,
+                                                       AccessToken currentAccessToken) {
+
+                if(currentAccessToken == null)
+                {
+                    SingletonSettings.getInstance().setLoginMethod(SingletonSettings.LoginMethod.not_at_all);
+                    SingletonSettings.getInstance().setProfileName(null);
+                    SingletonSettings.getInstance().setProfilePic(null);
+
+                }
+            }
+        };
     }
 
 
@@ -116,14 +139,14 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             checkFileExistence(currID);
             checkSharedPropertyExistence(currID);
 
+            return true;
+
+
         }
-
-
-
-
-
-        return true;
-
+        SingletonSettings.getInstance().setProfileName(null);
+        SingletonSettings.getInstance().setProfilePic(null);
+        SingletonSettings.getInstance().setLoginMethod(SingletonSettings.LoginMethod.not_at_all);
+        return false;
     }
 
 

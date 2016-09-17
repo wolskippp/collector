@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppTheme" parent="Theme.Collector"/>
+    <style name="AppTheme" parent="FeedActivityThemeDark"/>
+
+
+    <!-- Specific Feed activity theme -->
+    <style name="FeedActivityThemeLight" parent="ActivityTheme.Primary.Base.Light">
+        <item name="android:windowBackground">@color/gray</item>
+    </style>
+
+    <style name="FeedActivityThemeDark" parent="ActivityTheme.Primary.Base.Dark">
+        <item name="android:windowBackground">@color/carbon_black_54</item>
+    </style>
 
     <style name="Theme.Collector" parent="Theme.AppCompat.NoActionBar">
         <!--<item name="android:colorPrimaryDark">@color/carbon_white</item>-->
         <!--<item name="android:colorPrimary">@color/carbon_white_70</item>-->
+        <item name="android:textColor">@color/carbon_black</item>
+
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
         <item name="android:popupMenuStyle">@style/PopupMenu</item>
     </style>
+
+
 
 </resources>

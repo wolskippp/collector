@@ -50,8 +50,9 @@ public class ListItemAdapter extends BaseAdapter{
 
     public class Holder
     {
-        TextView tv;
-        ImageView img;
+        TextView nameSurname;
+        ImageView nameImage;
+        TextView title;
     }
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
@@ -66,17 +67,24 @@ public class ListItemAdapter extends BaseAdapter{
 
             convertView = vi.inflate(R.layout.single_item, parent, false);
 
+           // Typeface typeFace = initFont("fonts/avenir/AvenirLTStd-Light.otf");
 
-            holder.tv = (TextView) convertView.findViewById(R.id.textView2);
-            holder.tv.setText(result[position]);
-            holder.img = (ImageView) convertView.findViewById(R.id.imageView1);
-            String[] x = holder.tv.getText().toString().split(" ");
+            holder.title = (TextView)convertView.findViewById(R.id.title);
+
+
+
+            holder.nameSurname = (TextView) convertView.findViewById(R.id.nameSurname);
+           // holder.nameSurname.setTypeface(typeFace);
+            holder.nameSurname.setText(result[position]);
+
+
+            holder.nameImage = (ImageView) convertView.findViewById(R.id.imageView1);
+            String[] x = holder.nameSurname.getText().toString().split(" ");
+
             if (x.length > 1) {
-
-
-                holder.img.setImageBitmap(generateCircleBitmap(this.context, getMaterialColor(convertView), 20, new StringBuilder().append(x[0].charAt(0)).append('.').append(x[1].charAt(0)).append('.').toString()));
+                holder.nameImage.setImageBitmap(generateCircleBitmap(this.context, getMaterialColor(convertView), 20, String.valueOf(x[0].charAt(0)) + '.' + x[1].charAt(0) + '.'));
             } else if (x[0].length() > 1)
-                holder.img.setImageBitmap(generateCircleBitmap(this.context, getMaterialColor(convertView), 20, new StringBuilder().append(x[0].charAt(0)).append(x[0].charAt(1)).append('.').toString()));
+                holder.nameImage.setImageBitmap(generateCircleBitmap(this.context, getMaterialColor(convertView), 20, String.valueOf(x[0].charAt(0)) + x[0].charAt(1) + '.'));
 
 
             convertView.setOnClickListener(new OnClickListener() {
@@ -89,6 +97,29 @@ public class ListItemAdapter extends BaseAdapter{
         }
         return convertView;
     }
+
+    private Typeface initFont(String dir)
+    {
+       return Typeface.createFromAsset(context.getAssets(), dir);
+    }
+
+
+    private void initTitle() {
+
+    }
+
+    private void initNameSurname(){}
+
+
+    private void initDate(){}
+
+    private void initDescription(){}
+
+    private void initProfileImage(){}
+
+    private void initObjectPhoto(){}
+
+    private void initMoneyAmount(){}
 
 
     private static List<Integer> materialColors = Arrays.asList(
@@ -141,7 +172,7 @@ public class ListItemAdapter extends BaseAdapter{
             paintT.setColor(textColor);
             paintT.setAntiAlias(true);
             paintT.setTextSize(radiusPixels * 3/4 );
-            Typeface typeFace = Typeface.createFromAsset(context.getAssets(),"fonts/Canaro-Light.otf");
+            Typeface typeFace = Typeface.createFromAsset(context.getAssets(), "fonts/avenir/AvenirLTStd-HeavyOblique.otf");
             paintT.setTypeface(typeFace);
             final Rect textBounds = new Rect();
             paintT.getTextBounds(text, 0, text.length(), textBounds);
@@ -152,3 +183,4 @@ public class ListItemAdapter extends BaseAdapter{
     }
 
 }
+

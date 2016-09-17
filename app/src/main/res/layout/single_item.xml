@@ -2,31 +2,37 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
+    android:orientation="vertical"
+   android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
 
-    android:background="?android:attr/selectableItemBackground"
     android:layout_marginTop="15dp"
     android:layout_marginBottom="15dp"
     android:baselineAligned="true"
     android:clickable="true"
-    android:layoutMode="opticalBounds">
+    android:layoutMode="opticalBounds"
+    android:background="?attr/selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" android:orientation="horizontal">
 
     <ImageView
         android:id="@+id/imageView1"
         android:layout_gravity="center"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:src="@drawable/ic_activity_active"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:src="@drawable/default_profile"
         android:layout_weight="1.3"
         android:scaleType="fitCenter"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="5dp"
+
+
         android:contentDescription="person" />
 
 
    <LinearLayout
-       android:layout_width="0dp"
-       android:layout_weight="4.77"
+       android:layout_width="wrap_content"
+       android:layout_marginLeft="7dp"
        android:layout_height="wrap_content"
        android:orientation="vertical"
        android:layout_gravity="center_vertical"
@@ -35,24 +41,28 @@
 
 
        <TextView
-           android:id="@+id/textView1"
+           android:id="@+id/title"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:textSize="25dp"
+           android:textSize="25sp"
+           android:textColor="?attr/primaryTextColor"
            android:text="Pizza" />
 
        <TextView
-           android:id="@+id/textView2"
+           android:id="@+id/nameSurname"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:textSize="15dp"
+           android:textSize="15sp"
+           android:textColor="?attr/secondaryTextColor"
            android:text="Piotr Wolski" />
 
        <TextView
-           android:id="@+id/textView5"
+           android:id="@+id/description"
+           android:layout_marginTop="2dp"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:textSize="10dp"
+           android:textColor="?attr/secondaryTextColor"
            android:text="Description......................................................." />
 
 
@@ -61,22 +71,24 @@
 
 <RelativeLayout
     android:layout_width="wrap_content"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginRight="8dp">
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_marginRight="10dp"
+
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_gravity="center_vertical">
 
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="15dp"
+            android:textSize="15sp"
             android:text="19-09-2016"
+            android:textColor="?attr/secondaryTextColor"
             android:layout_gravity="right"/>
 
 
@@ -85,15 +97,28 @@
 
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="35dp"
         android:text="75 zł"
+        android:textColor="?attr/primaryTextColor"
        android:layout_alignParentBottom="true"/>
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:src="@drawable/ic_feed"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone"
+        />
 </RelativeLayout>
 
-
+    </LinearLayout>
+<Space
+    android:layout_width="wrap_content"
+    android:layout_height="5dp" />
 
 
 </LinearLayout> 

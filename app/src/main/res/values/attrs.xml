@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CTAppTheme">
+        <attr name="primaryTextColor" format="reference"/>
+        <attr name="secondaryTextColor" format="reference"/>
+        <attr name="dividerColor" format="reference"/>
+        <attr name="backgroundCardColor" format="reference"/>
+        <attr name="iconPlaceholder" format="integer"/>
+    </declare-styleable>
+
+</resources>

@@ -1,13 +1,64 @@
 <resources>
 
+
+
+
+    <!-- Light base activity theme -->
+    <style name="ActivityTheme.Primary.Base.Light" parent="Theme.AppCompat.NoActionBar">
+        <item name="primaryTextColor">@color/primaryTextColor</item>
+        <item name="secondaryTextColor">@color/secondaryTextColor</item>
+        <item name="backgroundCardColor">@color/backgroundCardColor</item>
+        <item name="dividerColor">@color/dividerColor</item>
+        <item name="iconPlaceholder">@drawable/ic_menu</item>
+    </style>
+    <!-- Dark base activity theme -->
+    <style name="ActivityTheme.Primary.Base.Dark"    parent="Theme.AppCompat.NoActionBar">
+        <item name="primaryTextColor">@color/primaryTextColorDark</item>
+        <item name="secondaryTextColor">@color/secondaryTextColorDark</item>
+        <item name="backgroundCardColor">@color/backgroundCardColorDark</item>
+        <item name="dividerColor">@color/dividerColorDark</item>
+        <item name="iconPlaceholder">@drawable/ic_menu</item>
+    </style>
+
+
+
+    <style name="Toolbar">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@color/guillotine_background</item>
+    </style>
+
+
+    <style name="fab" parent="Widget.Design.FloatingActionButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:src">@drawable/ic_add</item>
+        <item name="android:clickable">true</item>
+        <item name="android:layout_marginBottom">15dp</item>
+        <item name="android:layout_marginRight">15dp</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_alignParentEnd">true</item>
+    </style>
+
+
+
+
+
+
+
+
+
+
     <style name="LinearLayout" />
 
-    <style name="LinearLayout.GuillotineItem">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:orientation">horizontal</item>
-        <item name="android:layout_marginTop">@dimen/guillotine_small_margin</item>
-    </style>
+    <!--<style name="LinearLayout.GuillotineItem">-->
+        <!--<item name="android:layout_width">match_parent</item>-->
+        <!--<item name="android:layout_height">wrap_content</item>-->
+        <!--<item name="android:orientation">horizontal</item>-->
+        <!--<item name="android:layout_marginTop">@dimen/guillotine_small_margin</item>-->
+    <!--</style>-->
 
     <style name="TextView" />
 
@@ -20,26 +71,20 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <style name="TextView.GuillotineItem">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginLeft">@dimen/guillotine_small_margin</item>
-        <item name="android:textSize">@dimen/guillotine_item_text_size</item>
-        <item name="android:layout_gravity">center_vertical</item>
-        <item name="android:textColor">@android:color/white</item>
-    </style>
+    <!--<style name="TextView.GuillotineItem">-->
+        <!--<item name="android:layout_width">wrap_content</item>-->
+        <!--<item name="android:layout_height">wrap_content</item>-->
+        <!--<item name="android:layout_marginLeft">@dimen/guillotine_small_margin</item>-->
+        <!--<item name="android:textSize">@dimen/guillotine_item_text_size</item>-->
+        <!--<item name="android:layout_gravity">center_vertical</item>-->
+        <!--<item name="android:textColor">@android:color/darker_gray</item>-->
+    <!--</style>-->
 
-    <style name="TextView.GuillotineItem.Selected">
-        <item name="android:textColor">@color/selected_item_color</item>
-    </style>
+    <!--<style name="TextView.GuillotineItem.Selected">-->
+        <!--<item name="android:textColor">@color/selected_item_color</item>-->
+    <!--</style>-->
 
-    <style name="Toolbar">
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:minHeight">?attr/actionBarSize</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:background">@color/guillotine_background</item>
-    </style>
+
 
     <style name="ImageView" />
 
@@ -54,12 +99,12 @@
         <item name="android:layout_marginBottom">@dimen/abc_action_bar_overflow_padding_start_material</item>
     </style>
 
-    <style name="ImageView.GuillotineItem">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_gravity">center_vertical</item>
-        <item name="android:layout_marginLeft">@dimen/guillotine_large_margin</item>
-    </style>
+    <!--<style name="ImageView.GuillotineItem">-->
+        <!--<item name="android:layout_width">wrap_content</item>-->
+        <!--<item name="android:layout_height">wrap_content</item>-->
+        <!--<item name="android:layout_gravity">center_vertical</item>-->
+        <!--<item name="android:layout_marginLeft">@dimen/guillotine_large_margin</item>-->
+    <!--</style>-->
 
 
 

@@ -25,90 +25,24 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin">
 
-        <ViewFlipper
-            android:id="@+id/flipper"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
 
+
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/fragment_container">
+
+
+</FrameLayout>
 
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-
-
-            <android.support.design.widget.TabLayout
-                android:id="@+id/borrow_lend_tab"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:layout_marginBottom="10dp">
-                        <android.support.design.widget.TabItem
-
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="@string/borrow_label"/>
-                        <android.support.design.widget.TabItem
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="@string/lend_label"/>
-            </android.support.design.widget.TabLayout>
-
-
-            <android.support.design.widget.TabLayout
-                android:id="@+id/money_object_tab"
-                android:clickable="true"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                        <android.support.design.widget.TabItem
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="@string/money_label"/>
-                        <android.support.design.widget.TabItem
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="@string/object_label"/>
-            </android.support.design.widget.TabLayout>
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="bottom"
-                android:layout_marginTop="50dp"
-                android:textSize="25sp"
-                android:text="You borrowed money"
-                android:id="@+id/initial_label"
-                android:layout_gravity="center_horizontal" />
-
-
-        </LinearLayout>
-
-
-                <include android:id="@+id/add_money_layout" layout="@layout/add_money"/>
-
-
-                <include android:id="@+id/add_object_layout" layout="@layout/add_object"/>
-
-
-        </ViewFlipper>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
             android:orientation="horizontal"
             android:layout_margin="10dp"
-            android:layout_weight="1"
+
             >
 
             <Button
@@ -130,7 +64,7 @@
                 android:background="@drawable/btn_background"
                 android:layout_marginTop="20dp"
                 android:text="@string/next"
-                android:textColor="#fff"
+                android:textColor="?attr/primaryTextColor"
                 android:textAppearance="?android:textAppearanceMedium"/>
 
         </LinearLayout>
@@ -144,8 +78,8 @@
         android:background="@drawable/btn_background"
         android:layout_marginTop="20dp"
         android:text="@string/close"
-        android:layout_weight="1"
-        android:textColor="#fff"
+
+        android:textColor="?attr/primaryTextColor"
         android:textAppearance="?android:textAppearanceMedium"/>
 
     </LinearLayout>

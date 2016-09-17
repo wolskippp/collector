@@ -17,10 +17,12 @@ public class TabFragment extends Fragment {
 
     private ListView lv;
     private static final String DESCRIBABLE_KEY = "describable_key";
+    private static final String DEBT_TYPE = "DebtType";
 
-    public static TabFragment newInstance(String[] describable) {
+    public static TabFragment newInstance(String[] describable, int type) {
         TabFragment fragment = new TabFragment();
         Bundle bundle = new Bundle();
+        bundle.putSerializable(DEBT_TYPE,type);
         bundle.putSerializable(DESCRIBABLE_KEY, describable);
         fragment.setArguments(bundle);
 
@@ -33,10 +35,17 @@ public class TabFragment extends Fragment {
 
         String [] names  = (String[]) getArguments().getSerializable(
                 DESCRIBABLE_KEY);
+        int type = (int)getArguments().getSerializable(DEBT_TYPE);
 
-        lv=(ListView) view.findViewById(R.id.listView);
-        lv.setAdapter(new ListItemAdapter(getContext(), names));
-
+        if(type==0) {
+            lv = (ListView) view.findViewById(R.id.listViewMoney);
+            lv.setAdapter(new ListItemAdapter(getContext(), names));
+        }
+        else
+        {
+            lv = (ListView) view.findViewById(R.id.listViewObjects);
+            lv.setAdapter(new ListItemAdapter(getContext(), names));
+        }
 
         return view;
     }
